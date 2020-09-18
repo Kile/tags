@@ -159,34 +159,15 @@ ${value}`,
   }); //tbh I have no idea what this does, but it is in the Pylon server as well and Jake send me the code so I wanted to include it
 
   tagCommands.raw({ name: 'commands', aliases: ['help'] }, async (message) => {
-    message.reply(
-      new discord.Embed({
-        title: `Tag commands`,
-        description:
-          '`' +
-          '!tag <value>' +
-          '` gives you the info set to that tag\n' +
-          '`' +
-          '!tag search <value>' +
-          '` searches the tag lis and finds the closest 3 matches to your search\n' +
-          '`' +
-          '!tag list' +
-          '` gives you a list of the tags set\n\n' +
-          '**Restriced to <@&' +
-          tagperms +
-          '>**\n' + //those are my permission recommendations, if you change permissions you need to put them somewhere lese here as well
-          '`' +
-          '!tag set <value>' +
-          '` sets a tag\n' +
-          '`' +
-          '!tag delete <value>' +
-          '` deletes specified tag\n' +
-          '`' +
-          '!tag normalize' +
-          '` someone please tell me what this does so I can update this code',
-        color: color
-      })
-    );
+      description: `
+        \`${commands.defaultPrefix}tag\` gives you the info set to that tag
+        \`${commands.defaultPrefix}tag list\` gives you a list of the tags set
+        \`${commands.defaultPrefix}tag search\` searches the tag list and finds the closest matches\n
+        **Restriced to <@&${tagperms}>**
+        \`${commands.defaultPrefix}tag set\` sets a tag
+        \`${commands.defaultPrefix}tag delete\` deletes specified tag
+        \`${commands.defaultPrefix}tag normalize\` makes every tag lower case and removes white spaces
+    `,
   });
 });
 
@@ -253,5 +234,6 @@ async function gettag(key: string) {
 //metal#0666
 //Jake#0001 for the command lol
 //satan#0265
+//HighArcs#0001
 
 //and me, Kile Alkuri#0606
