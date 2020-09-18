@@ -5,10 +5,12 @@ const tagsKv = new pylon.KVNamespace('tags');
 var tagperms = '730088391424606328';
 //the role that has access to every tag command, of course multiple are possible
 
-const commands = new discord.command.CommandGroup({
-  defaultPrefix: '!'
-});
+const prefix = '!'
 //your prefix
+
+const commands = new discord.command.CommandGroup({
+  defaultPrefix: prefix
+});
 
 const bestmatches = 3;
 //Here you define how many top results it should give you if you do !tag search or if !tag x === undefined
@@ -74,7 +76,6 @@ commands.subcommand('tag', (tagCommands) => {
           title: `✅ Tag "${key}" Set`,
           description: `**Old value**
 ${oldtag ?? '<unset>'}
-
 **New value**
 ${value}`,
           color: color
@@ -156,18 +157,22 @@ ${value}`,
     }
 
     await message.reply(`${numNormalized} tags normalized.`);
-  }); //tbh I have no idea what this does, but it is in the Pylon server as well and Jake send me the code so I wanted to include it
+  });
 
   tagCommands.raw({ name: 'commands', aliases: ['help'] }, async (message) => {
-      description: `
-        \`${commands.defaultPrefix}tag\` gives you the info set to that tag
-        \`${commands.defaultPrefix}tag list\` gives you a list of the tags set
-        \`${commands.defaultPrefix}tag search\` searches the tag list and finds the closest matches\n
+    message.reply(
+      new discord.Embed({
+        description: `
+        \`${prefix}tag\` gives you the info set to that tag
+        \`${prefix}tag list\` gives you a list of the tags set
+        \`${prefix}tag search\` searches the tag list and finds the closest matches\n
         **Restriced to <@&${tagperms}>**
-        \`${commands.defaultPrefix}tag set\` sets a tag
-        \`${commands.defaultPrefix}tag delete\` deletes specified tag
-        \`${commands.defaultPrefix}tag normalize\` makes every tag lower case and removes white spaces
-    `,
+        \`${prefix}tag set\` sets a tag
+        \`${prefix}tag delete\` deletes specified tag
+        \`${prefix}tag normalize\` makes every tag lower case and removes white spaces
+    `
+      })
+    );
   });
 });
 
@@ -237,3 +242,4 @@ async function gettag(key: string) {
 //HighArcs#0001
 
 //and me, Kile Alkuri#0606
+
