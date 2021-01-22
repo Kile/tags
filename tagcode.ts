@@ -223,7 +223,7 @@ async function gettag(key: string) {
   } else {
     const embed = new discord.Embed({
       title: `:notebook_with_decorative_cover: **${key}**`,
-      description: `**${value}**`,
+      description: `${value}`,
       color: color
     });
     return embed;
@@ -239,7 +239,6 @@ async function gettag(key: string) {
 //metal#0666
 //Jake#0001 for the command lol
 //satan#0265
-//HighArcs#0001
 
 //and me, Kile Alkuri#0606
 
