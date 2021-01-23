@@ -15,7 +15,7 @@ const commands = new discord.command.CommandGroup({
 const bestmatches = 3;
 //Here you define how many top results it should give you if you do !tag search or if !tag x === undefined
 
-const color = 0x8fff8;
+const color = 0x1400ff;
 //Here you define your color for your tag Embeds
 
 commands.subcommand('tag', (tagCommands) => {
@@ -239,6 +239,3 @@ async function gettag(key: string) {
 //metal#0666
 //Jake#0001 for the command lol
 //satan#0265
-
-//and me, Kile Alkuri#0606
-
